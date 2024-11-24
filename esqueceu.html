@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EldenWood - Recuperação de E-mail</title>
+    <style>
+        body {
+            font-family: Times;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #04f6f6;
+            background-image: url('img/fundo.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            background-image: url('img/floresta1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        div {
+            background: rgba(35, 43, 42, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 36px;
+            background: linear-gradient(90deg, #00f, #0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 2px 2px 10px rgba(24, 0, 0, 0.735);
+            border-radius: 8px;
+            letter-spacing: 3px;
+        }
+
+        input[type="email"] {
+            width: 90%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 33px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #000;
+            font-size: 16px;
+        }
+        
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #475dc2;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #e9661a;
+        }
+
+        #alerta {
+            display: none;
+            color: #ffffff;
+            margin-top: 15px;
+        }
+        
+        footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #00f698;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 30px;
+            border: none;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100vh;
+            background-color: #10efef8a;
+            color: white;
+            padding-top: 50px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 9;
+        }
+
+        .menu a {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .menu a:hover {
+            background-color: #e9661a;
+        }
+
+        .menu.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>EldenWood</h2>
+        <h1>Digite seu e-mail cadastrado:</h1>
+        <input type="email" id="email" placeholder="seuemail@gmail.com" required>
+        <button onclick="enviarEmail()">Enviar</button>
+        <div id="alerta">E-mail de recuperação enviado a: <span id="email-enviado"></span></div>
+    </div> 
+
+    <button class="menu-btn" onclick="toggleMenu()">㊂</button>
+
+    <div class="menu" id="menu">
+        <a href="loginRpg.html">Login</a>
+        <a href="cadastro.html">Cadastro</a>
+        <a href="about.html">Sobre Eldenwood</a>
+        <a href="https://www.temu.com/br/ul/kuiper/un2.html?_p_rfs=1&subj=un-search-web&_p_jump_id=960&_x_vst_scene=adg&search_key=loja%20de%20rpg&_x_ads_channel=bing&_x_ads_sub_channel=search&_x_ads_account=176727729&_x_ads_set=521333190&_x_ads_id=1321615373643800&_x_ads_creative_id=82601189219855&_x_ns_source=o&_x_ns_msclkid=43ac3735d3a31fbafa1a50750d5669b3&_x_ns_match_type=b&_x_ns_bid_match_type=bb&_x_ns_query=loja%20rpg&_x_ns_keyword=loja%20de%20rpg&_x_ns_device=c&_x_ns_targetid=kwd-82602102599725%3Aloc-20&_x_ns_extensionid=&msclkid=43ac3735d3a31fbafa1a50750d5669b3&adg_ctx=f-ce8316a4" target="_blank">Acesse nossa Loja</a>
+    </div>
+
+    <footer>
+        EldenWood &copy; 2024. Todos os direitos reservados à Kagura.
+    </footer>
+
+    <script>
+        function enviarEmail() {
+            const emailInput = document.getElementById('email');
+            const alerta = document.getElementById('alerta');
+            const emailEnviado = document.getElementById('email-enviado');
+
+            if (emailInput.value) {
+                emailEnviado.textContent = emailInput.value; 
+                alerta.style.display = 'block'; 
+            } else {
+                alert('Por favor, digite um e-mail.'); 
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

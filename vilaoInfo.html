@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História de Yggdrasil</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e2f;
+            background-image: url('img/darkAp.webp');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #ff4d4d;
+            font-size: 2.5em;
+        }
+
+        .container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 75px;
+            max-width: 1300px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .content {
+            flex: 1 1 60%;
+            padding-right: 50px;
+        }
+
+        .image-container {
+            flex: 1 1 35%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container img {
+            width: 85%;
+            border-radius: 50px;
+        }
+
+        .introduction {
+            background-color: rgba(49, 40, 32, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            font-size: 2em;
+            color: #f0b65f;
+            height: 65px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .history {
+            background-color: rgba(49, 40, 32, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .history h2 {
+            color: #f0b65f;
+            border-bottom: 2px solid #f0b65f;
+            padding-bottom: 5px;
+        }
+
+        .info-container {
+            background-color: rgba(49, 40, 32, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .info-container h2 {
+            color: #f0b65f;
+            border-bottom: 2px solid #f0b65f;
+            padding-bottom: 5px;
+        }
+
+        .info-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .info-container::-webkit-scrollbar-thumb {
+            background-color: #f0b65f;
+            border-radius: 4px;
+        }
+
+        .info-container::-webkit-scrollbar-track {
+            background: rgba(49, 40, 32, 0.5);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #444;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #352511;
+            color: #f0b65f;
+        }
+
+        td {
+            background-color: #312820;
+        }
+
+        .button-container {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .continue-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f0b65f;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .continue-button:hover {
+            background-color: #d49e4c;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: rgba(49, 40, 32, 0.7);
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #380303cd;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 30px;
+            border: none;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+
+        .menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100vh;
+            background-color: #ef10108a;
+            color: white;
+            padding-top: 50px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 9;
+        }
+
+        .menu a {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .menu a:hover {
+            background-color: #825901d5;
+        }
+
+        .menu.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="introduction">
+                <p>Yggdrasil</p>
+            </div>
+
+            <div class="history">
+                <h2>A História</h2>
+                <p>Nascido no reino oculto de <strong>Zaryndor</strong>, Yggdrasil carregava uma marca profética em seu peito, anunciando destruição e renascimento...</p>
+            </div>
+
+            <div class="info-container">
+                <h2>Informações Gerais</h2>
+                <ul>
+                    <li><strong>Nome:</strong> Yggdrasil</li>
+                    <li><strong>Raça:</strong> Demônio</li>
+                    <li><strong>Classe:</strong> Senhor das Chamas</li>
+                </ul>
+                <h2>Atributos</h2>
+                <table>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Valor</th>
+                    </tr>
+                    <tr>
+                        <td>Força</td>
+                        <td>18</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="image-container">
+            <img src="img/ygg.jpg" alt="Yggdrasil">
+            <div class="button-container">
+                <a href="inicioDaJornada.html" class="continue-button">Continuar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<button class="menu-btn" onclick="toggleMenu()">㊂</button>
+
+
+<div class="menu" id="menu">
+    <a href="loginRpg.html">Login</a>
+    <a href="cadastro.html">Cadastro</a>
+    <a href="esqueceu.html">Esqueci a senha</a>
+    <a href="about.html">Sobre Eldenwood</a>
+    <a href="selecao.html">Personagens</a>
+    <a href="magoInfo.html">Mago</a>
+    <a href="druidaInfo.html">Druida</a>
+    <a href="elfoInfo.html">Elfo</a>
+    <a href="guerreiroInfo.html">Guerreiro</a>
+    <a href="https://www.temu.com/br/ul/kuiper/un2.html?_p_rfs=1&subj=un-search-web&_p_jump_id=960&_x_vst_scene=adg&search_key=loja%20de%20rpg&_x_ads_channel=bing&_x_ads_sub_channel=search&_x_ads_account=176727729&_x_ads_set=521333190&_x_ads_id=1321615373643800&_x_ads_creative_id=82601189219855&_x_ns_source=o&_x_ns_msclkid=43ac3735d3a31fbafa1a50750d5669b3&_x_ns_match_type=b&_x_ns_bid_match_type=bb&_x_ns_query=loja%20rpg&_x_ns_keyword=loja%20de%20rpg&_x_ns_device=c&_x_ns_targetid=kwd-82602102599725%3Aloc-20&_x_ns_extensionid=&msclkid=43ac3735d3a31fbafa1a50750d5669b3&adg_ctx=f-ce8316a4" target="_blank">Acesse nossa Loja</a>
+
+</div>
+    <footer>
+        EldenWood &copy; 2024. Todos os direitos reservados à Kagura.
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
